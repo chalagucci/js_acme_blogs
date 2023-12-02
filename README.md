@@ -4,6 +4,8 @@
 
 **Start by clicking the Remix on Glitch button above.**
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/307ffd10-62b3-40e5-a9ae-1c6d507f24ac/deploy-status)](https://app.netlify.com/sites/sweet-griffin-967b6e/deploys)
+
 _Once you are working with your own copy of the project on Glitch..._
 
 **Follow the directions available in Blackboard** 
