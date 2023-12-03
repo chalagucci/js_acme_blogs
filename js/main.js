@@ -227,10 +227,10 @@
       if (!users) return; 
       {
         let menu = document.querySelector("#selectMenu");
-        let options = createSelectOptions(users);
+        let optionElem = createSelectOptions(users);
       
-        for (let i = 0; i < options.length; i++) {
-            let option = options[i];
+        for (let i = 0; i < optionElem.length; i++) {
+            let option = optionElem[i];
             menu.append(option);
         }
       
@@ -254,7 +254,7 @@
       const response = await fetch("https://jsonplaceholder.typicode.com/users");
       return await response.json();
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   }
   
@@ -278,7 +278,7 @@ async function getUserPosts(userId){
       const response = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`);
       return await response.json();
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   }
   
@@ -302,7 +302,7 @@ async function getUser(userId){
       const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
       return await response.json();
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   }
   
@@ -326,7 +326,7 @@ async function getPostComments(postId){
       const response = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`);
       return await response.json();
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   }
 
@@ -428,9 +428,9 @@ async function getPostComments(postId){
     */
     async function displayPosts(posts){
       const mainElement = document.querySelector("main");
-      const element = (await createPosts(posts)) ? await createPosts(posts) : createElemWithText('p', 'Select an Employee to display their posts.', 'default-text');
-      mainElement.append(element);
-      return element;
+      const elemen = (await createPosts(posts)) ? await createPosts(posts) : createElemWithText('p', 'Select an Employee to display their posts.', 'default-text');
+      mainElement.append(elemen);
+      return elemen;
     } 
     /*
     17. toggleComments
@@ -480,12 +480,13 @@ async function getPostComments(postId){
       if (!posts){
         return undefined;
       }
-        const removeButtons = removeButtonListeners();
-        const mainElement = deleteChildElements(document.querySelector('main'));
-        const fragment = await displayPosts(posts);
-        const addButtons = addButtonListeners();
-        return [removeButtons, mainElement, fragment, addButtons];
-      }
+      const removeButtons = removeButtonListeners();
+      const main = document.querySelector('main')
+      const mainPas = deleteChildElements(main);
+      const fragment = await displayPosts(posts);
+      const addButtons = addButtonListeners();
+      return [removeButtons, mainPas, fragment, addButtons];
+    }
   
       
     /*
